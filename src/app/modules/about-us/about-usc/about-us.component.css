@@ -1,0 +1,47 @@
+.aboutus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 20px;
+}
+
+.first1 {
+  text-align: center;
+  font-size: 17px;
+  font-family: 'poppins' sans-serif;
+  color: black;
+  /* margin-bottom: 5px; */
+}
+
+.first2 {
+  text-align: center;
+  font-size: 17px;
+  font-family: 'poppins' sans-serif;
+  color: black;
+  /* margin-bottom: 5px; */
+}
+
+.first3 {
+  text-align: center;
+  font-size: 17px;
+  font-family: 'poppins' sans-serif;
+  color: black;
+  /* margin-bottom: 5px; */
+}
+
+.first4 {
+  text-align: center;
+  font-size: 17px;
+  font-family: 'poppins' sans-serif;
+  color: black;
+  /* margin-bottom: 5px; */
+}
+
+.first5 {
+  text-align: center;
+  font-size: 17px;
+  font-family: 'poppins' sans-serif;
+  color: black;
+  /* margin-bottom: 5px; */
+}
