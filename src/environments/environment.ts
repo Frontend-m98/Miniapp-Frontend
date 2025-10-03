@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    apiUrl: 'https://miniapp-backend-9kb4.onrender.com'
+    apiUrl: 'https://miniapp-backend-1-0xh5.onrender.com'
 };

@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
 export class ProductsService {
   private apiUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getProducts(params: PaginationParams): Observable<Products> {
     return this.http.get<Products>(`${this.apiUrl}/clothes`, { params });
