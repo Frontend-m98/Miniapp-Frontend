@@ -13,3 +13,13 @@
     margin-top: 0.5rem;
   }
 }
+
+// Bo'sh bo‘lsa (invalid va touched bo‘lsa) qizil
+input.ng-invalid.ng-touched {
+  border: 2px solid red;
+}
+
+/* To‘ldirilgan va valid bo‘lsa yashil */
+input.ng-valid.ng-touched {
+  border: 2px solid rgb(21, 216, 21);
+}

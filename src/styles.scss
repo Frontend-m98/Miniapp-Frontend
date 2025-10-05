@@ -20,7 +20,7 @@ html,
 body,
 app-root {
     height: 100%;
-    background-color: rgb(234, 204, 140);
+    background-color: rgb(235, 156, 65);
 }
 
 app-root {
@@ -89,4 +89,9 @@ app-root {
 
 .hidden {
     display: none;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
 }

@@ -7,10 +7,14 @@ import { Paginator, PaginatorModule } from 'primeng/paginator';
 import { EditComponent } from '../components/edit/edit.component';
 import { ButtonDirective } from 'primeng/button';
 import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
+  providers: [MessageService],
   imports: [
     ProductComponent,
     CommonModule,
@@ -18,12 +22,16 @@ import { ButtonModule } from 'primeng/button';
     EditComponent,
     ButtonDirective,
     ButtonModule,
+    ToastModule,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  constructor(private productsService: ProductsService) { }
+
+  constructor(private productsService: ProductsService,
+    private messageService: MessageService
+  ) { }
 
   @ViewChild('paginator') paginator: Paginator | undefined;
 
@@ -95,37 +103,72 @@ export class HomeComponent {
       },
     });
   }
-  
+
   editProduct(product: Product, id: number) {
     this.productsService.editProduct(id, product).subscribe({
       next: () => {
         this.fetchProducts(0, this.rows);
         this.resetPaginator();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Updated',
+          detail: 'Product updated successfully!',
+        });
       },
-      error: (error) => console.log('Edit error:', error),
+      error: (error) => {
+        console.log('Edit error:', error);
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Failed to update product.',
+        });
+      },
     });
   }
-  
+
   deleteProduct(id: number) {
     this.productsService.deleteProduct(id).subscribe({
       next: () => {
         this.fetchProducts(0, this.rows);
         this.resetPaginator();
+        this.messageService.add({
+          severity: 'warn',
+          summary: 'Deleted',
+          detail: 'Product deleted successfully!',
+        });
       },
-      error: (error) => console.log('Delete error:', error),
+      error: (error) => {
+        console.log('Delete error:', error);
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Failed to delete product.',
+        });
+      },
     });
   }
-  
+
   addProduct(product: Product) {
     this.productsService.addProduct(product).subscribe({
       next: () => {
         this.fetchProducts(0, this.rows);
         this.resetPaginator();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Added',
+          detail: 'Product successfully added!',
+        });
       },
-      error: (error) => console.log('Add error:', error),
+      error: (error) => {
+        console.log('Add error:', error);
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Failed to add product.',
+        });
+      },
     });
   }
-
   ngOnInit() {
     this.fetchProducts(0, this.rows);
   }
