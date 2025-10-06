@@ -1,8 +1,20 @@
-<header class="wrapper column full-center">
-  <img src="images/brand.svg" alt="Logo" class="logo" />
+<header class="header">
+  <div class="header__logo">
+    <img src="images/brand.svg" alt="Logo" class="logo" />
+  </div>
 
-  <div class="row gap-1">
-    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
-    <a routerLink="/about-us" routerLinkActive="active">About</a>
+  <nav class="header__nav">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      {{ 'HOME' | translate }}
+    </a>
+    <a routerLink="/about-us" routerLinkActive="active">
+      {{ 'ABOUT' | translate }}
+    </a>
+  </nav>
+
+  <div class="header__lang">
+    <button (click)="switchLang('uz')" [class.active]="currentLang === 'uz'">UZ</button>
+    <button (click)="switchLang('en')" [class.active]="currentLang === 'en'">EN</button>
+    <button (click)="switchLang('ru')" [class.active]="currentLang === 'ru'">RU</button>
   </div>
 </header>

@@ -1,37 +1,56 @@
-<p-dialog [header]="header" [(visible)]="display" [modal]="true" [closable]="false">
-
+<p-dialog [header]="header" [(visible)]="display" [modal]="true" [closable]="false" [draggable]="false"
+  [resizable]="false" [baseZIndex]="10000" [dismissableMask]="true"
+  [style]="{ width: '400px', 'border-radius': '12px' }" [transitionOptions]="'300ms cubic-bezier(0.25, 1, 0.5, 1)'">
   <div class="column gap-1 form-wrapper" [formGroup]="productForm">
     <!-- Name -->
     <div class="row gap-05">
       <span class="price-label">Name:</span>
-      <input type="text" formControlName="name" />
+      <div class="column" style="flex: 3">
+        <input type="text" formControlName="name" placeholder="Enter product name" />
+        <small class="error" *ngIf="productForm.get('name')?.touched && productForm.get('name')?.hasError('required')">
+          Name is required
+        </small>
+        <small class="error" *ngIf="productForm.get('name')?.hasError('hasSpecialCharacter')">
+          Special characters are not allowed
+        </small>
+      </div>
     </div>
 
     <!-- Price -->
     <div class="row gap-05">
       <span class="price-label">Price:</span>
-      <input type="text" formControlName="price" />
+      <div class="column" style="flex: 3">
+        <input type="text" formControlName="price" placeholder="Enter price" />
+        <small class="error"
+          *ngIf="productForm.get('price')?.touched && productForm.get('price')?.hasError('required')">
+          Price is required
+        </small>
+        <small class="error" *ngIf="productForm.get('price')?.hasError('pattern')">
+          Price must be a valid number
+        </small>
+      </div>
     </div>
 
     <!-- Image -->
     <div class="row gap-05">
       <span class="price-label">Image:</span>
-      <input type="text" formControlName="image" />
+      <input type="text" formControlName="image" placeholder="Enter image URL" />
     </div>
 
     <!-- Rating -->
+    <div class="rating">
+      <span class="price-label">Rating:</span>
+      <p-rating formControlName="rating" [readonly]="false" [stars]="5" iconCancelClass="hidden"></p-rating>
+    </div>
 
-    <p-rating formControlName="rating" [readonly]="false" [stars]="5" iconCancelClass="hidden" />
-
+    <!-- Footer -->
     <p-footer>
-      <div class="row gap-05">
-        <button type="button" pButton icon="pi pi-check" (click)="onConfirm()" label="Confirm" [class.disabled]="!productForm.valid"></button>
-        <button type="button" pButton icon="pi pi-times" (click)="onCancel()" label="Cancel"
-        class="p-button-danger"
-        ></button>
+      <div class="footer">
+        <button type="button" pButton icon="pi pi-check" label="Confirm" (click)="onConfirm()"
+          [disabled]="!productForm.valid" class="p-button-rounded p-button-success"></button>
+        <button type="button" pButton icon="pi pi-times" label="Cancel" (click)="onCancel()"
+          class="p-button-rounded p-button-danger"></button>
       </div>
     </p-footer>
-
   </div>
-
 </p-dialog>

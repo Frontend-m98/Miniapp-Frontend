@@ -3,12 +3,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .addBtn {
   position: obsolute;
-  bottom: 40px;
   text-align: center;
   width: 150px;
   height: 45px;

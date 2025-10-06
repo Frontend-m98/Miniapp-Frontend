@@ -1,5 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
 import { Product } from '../../../types';
 import { ButtonDirective } from 'primeng/button';
@@ -30,8 +38,8 @@ import { ButtonModule } from 'primeng/button';
   styleUrls: ['./edit.component.scss'],
 })
 export class EditComponent implements OnInit, OnChanges {
-
   productForm!: FormGroup;
+  dialogWidth = window.innerWidth < 600 ? '90vw' : '420px';
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -39,7 +47,6 @@ export class EditComponent implements OnInit, OnChanges {
   @Output() displayChange = new EventEmitter<boolean>();
 
   @Input() header!: string;
-
   @Input() product: Product = {
     name: '',
     image: '',
@@ -49,39 +56,41 @@ export class EditComponent implements OnInit, OnChanges {
 
   @Output() confirm = new EventEmitter<Product>();
 
-
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
+      id: [0],
       name: ['', [Validators.required, this.specialCharacterValidator()]],
       image: [''],
-      price: ['', [Validators.required]],
+      price: ['', [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
       rating: [0],
+    });
+
+    // Responsive dialog width listener
+    window.addEventListener('resize', () => {
+      this.dialogWidth = window.innerWidth < 600 ? '90vw' : '420px';
     });
   }
 
   specialCharacterValidator(): ValidatorFn {
     return (control) => {
       if (!control.value) return null;
-      const hasSpecialCharacter = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(control.value);
+      const hasSpecialCharacter = /[!@#$%^*_=+{}[\]|<>\/\\]/.test(control.value);
       return hasSpecialCharacter ? { hasSpecialCharacter: true } : null;
     };
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['product'] && this.product) {
-      if (this.productForm) {
-        this.productForm.patchValue(this.product);
-      }
+    if (changes['product'] && this.productForm) {
+      this.productForm.patchValue(this.product);
     }
   }
 
   onConfirm() {
     if (this.productForm.invalid) return;
-
-    const { name, image, price, rating } = this.productForm.value;
+    const { id, name, image, price, rating } = this.productForm.value;
 
     this.confirm.emit({
-      id: this.product.id, // <-- MUHIM QO‘SHILDI
+      id,
       name: name || '',
       image: image || '',
       price: price || '',
@@ -89,11 +98,11 @@ export class EditComponent implements OnInit, OnChanges {
     });
 
     this.display = false;
-    this.displayChange.emit(this.display);
+    this.displayChange.emit(false);
   }
 
   onCancel() {
     this.display = false;
-    this.displayChange.emit(this.display);
+    this.displayChange.emit(false);
   }
 }

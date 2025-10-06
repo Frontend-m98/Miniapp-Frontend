@@ -10,7 +10,6 @@ import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 
-
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -28,10 +27,7 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-
-  constructor(private productsService: ProductsService,
-    private messageService: MessageService
-  ) { }
+  constructor(private productsService: ProductsService, private messageService: MessageService) {}
 
   @ViewChild('paginator') paginator: Paginator | undefined;
 

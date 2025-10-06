@@ -1,25 +1,101 @@
 .form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
   .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+
     span {
       flex: 1;
+      font-weight: 600;
+      color: #333;
     }
 
     input {
       flex: 3;
+      padding: 0.5rem 0.7rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      outline: none;
+      transition: all 0.25s ease;
+
+      &:focus {
+        border-color: #42a5f5;
+        box-shadow: 0 0 6px rgba(66, 165, 245, 0.4);
+      }
     }
   }
 
   .rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     margin-top: 0.5rem;
   }
 }
 
-// Bo'sh bo‘lsa (invalid va touched bo‘lsa) qizil
+/* Validatsiya ranglari */
 input.ng-invalid.ng-touched {
-  border: 2px solid red;
+  border: 2px solid #e53935;
 }
 
-/* To‘ldirilgan va valid bo‘lsa yashil */
 input.ng-valid.ng-touched {
-  border: 2px solid rgb(21, 216, 21);
+  border: 2px solid #43a047;
+}
+
+/* Error xabar */
+.error {
+  color: #e53935;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+/* Footer btn */
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+/* Modal oynaning uslubi */
+:host ::ng-deep .p-dialog {
+  z-index: 20000 !important;
+  border-radius: 12px;
+  overflow: hidden;
+  animation: fadeInUp 0.3s ease forwards;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Fon (mask) uchun z-index */
+:host ::ng-deep .p-dialog-mask {
+  z-index: 19999 !important;
+  backdrop-filter: blur(2px);
+}
+
+/* Header dizayni */
+:host ::ng-deep .p-dialog-header {
+  background: linear-gradient(135deg, #1976d2, #42a5f5);
+  color: #fff;
+  font-weight: 600;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Kirish animatsiyasi */
+@keyframes fadeInUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
