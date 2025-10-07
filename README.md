@@ -8,3 +8,5 @@
    ![alt text](image-1.png)
 
 5. run angular app (ng serve) || (npm run start)
+
+Added smthing to the project
