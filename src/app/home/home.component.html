@@ -2,9 +2,12 @@
 <p-toast position="top-right"></p-toast>
 
 <div class="column gap-1">
-  <!-- Add Product Buttom -->
+  <!-- Add Product Button -->
   <div class="conBtn">
-    <button class="addBtn" type="button" pButton icon="pi pi-plus" (click)="toggleAdd()" label="Add Product"></button>
+    <button class="addBtn" type="button" (mousedown)="$event.preventDefault()" (click)="toggleAdd()">
+      <i class="pi pi-shopping-cart"></i>
+      <span>{{ 'ADD_PRODUCT' | translate }}</span>
+    </button>
   </div>
 
   <!-- Products Section -->
@@ -15,13 +18,16 @@
   </div>
 
   <!-- Paginator -->
-  <p-paginator [rows]="rows" [totalRecords]="totalRecords" [rowsPerPageOptions]="[5, 10, 15, 20,25,30]"
-    (onPageChange)="onPageChange($event)" #paginator></p-paginator>
+  <p-paginator [rows]="rows" [totalRecords]="totalRecords" [rowsPerPageOptions]="[5,10,15,20,25,30]"
+    (onPageChange)="onPageChange($event)" #paginator>
+  </p-paginator>
 </div>
 
-<!-- Edit-Product -->
+<!-- Edit -->
 <app-edit [product]="selectedProduct" [(display)]="displayEdit" (confirm)="onConfirmEdit($event)"
-  header="Edit Product"></app-edit>
+  [header]="'EDIT_PRODUCT' | translate">
+</app-edit>
 
-<!-- Add-Product -->
-<app-edit [(display)]="displayAdd" (confirm)="onConfirmAdd($event)" header="Add Product"></app-edit>
+<!-- Add -->
+<app-edit [(display)]="displayAdd" (confirm)="onConfirmAdd($event)" [header]="'ADD_PRODUCT' | translate">
+</app-edit>

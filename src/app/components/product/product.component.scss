@@ -1,14 +1,14 @@
 .wrapper {
-  background-color: rgba(243, 245, 247, 0.361);
+  background-color: rgb(242, 246, 246);
   border-radius: 12px;
   padding: 1rem;
   text-align: center;
   width: 100%;
   max-width: 260px;
   margin: 1rem auto;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+  box-shadow:
+    rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-  // transition: all 0.35s ease-in-out;
   transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   cursor: pointer;
   position: relative;
@@ -19,7 +19,8 @@
     border-radius: 10px;
     margin-bottom: 0.75rem;
     transition: transform 0.4s ease;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    box-shadow:
+      rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
       rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   }
 
@@ -47,14 +48,13 @@
     transition: color 0.3s ease;
   }
 
-  // 🔹 Hover, focus, yoki active bo‘lganda
   &:hover,
   &:focus-within,
   &.active {
-    background: linear-gradient(135deg, #77AAEC, #5B8DE0);
-    // transform: translateY(-8px) scale(1.03);
+    background: linear-gradient(135deg, #77aaec, #5b8de0);
     transform: translateY(-6px) scale(1.02);
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 20px,
+    box-shadow:
+      rgba(0, 0, 0, 0.25) 0px 10px 20px,
       rgba(0, 0, 0, 0.05) 0px 6px 6px;
 
     img {
@@ -85,34 +85,41 @@
     pointer-events: none;
 
     button {
-      transition: all 0.3s ease;
       border-radius: 8px;
       font-weight: 500;
       font-size: 0.9rem;
+      padding: 0.5rem 0.8rem;
+      transition: all 0.3s ease;
 
       &:hover {
         transform: scale(1.08);
         filter: brightness(1.15);
       }
     }
+
+    .btn-edit {
+      background: #4caf50 !important;
+      /* Yashil */
+      border: none;
+      color: #fff;
+
+      &:hover {
+        background: #45a049 !important;
+      }
+    }
+
+    .btn-delete {
+      background: #f44336 !important;
+      /* Qizil */
+      border: none;
+      color: #fff;
+
+      &:hover {
+        background: #e53935 !important;
+      }
+    }
   }
 
-  // 🔹 Nafas oluvchi animatsiya
-  @keyframes breathe {
-    0% {
-      transform: scale(1);
-    }
-
-    50% {
-      transform: scale(1.015);
-    }
-
-    100% {
-      transform: scale(1);
-    }
-  }
-
-  // 📱 Responsiv dizayn
   @media (max-width: 1200px) {
     max-width: 230px;
   }
@@ -138,9 +145,8 @@
       gap: 0.4rem;
     }
 
-    // 🔹 Mobil bosilganda (hover ishlamasa)
     &:active {
-      background: linear-gradient(135deg, #73a9e0, #5B8DE0);
+      background: linear-gradient(135deg, #73a9e0, #5b8de0);
       transform: scale(1.03);
       box-shadow: rgba(0, 0, 0, 0.25) 0px 6px 10px;
 

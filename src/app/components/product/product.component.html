@@ -1,22 +1,22 @@
+<div class="column gap-1 wrapper" tabindex="0">
+  <img [src]="product.image" alt="Brand Product" />
 
-   <div class="column gap-1 wrapper" tabindex="0">
-    <img [src]="product.image" alt="Brand Product" />
-  
-    <h2 class="title">{{ product.name | truncateName: 20:"..." }}</h2>
-  
-    <div class="row gap-05">
-      <span class="price-label">Price:</span>
-      <span class="price">{{ product.price | price }}</span>
-    </div>
-  
-    <p-rating [(ngModel)]="product.rating" [readonly]="true" [stars]="5" iconCancelClass="hidden"></p-rating>
-  
-    <div class="action-buttons">
-      <button type="button" pButton icon="pi pi-pencil" (click)="editProduct()" label="Edit"></button>
-      <button type="button" pButton icon="pi pi-trash" (click)="confirmDelete($event)"
-        label="Delete" class="p-button-danger" #deleteButton></button>
-    </div>
+  <h2 class="title">{{ getTranslatedProductName() | truncateName: 20:"..." }}</h2>
+
+  <div class="row gap-05">
+    <span class="price-label">{{ 'PRICE' | translate }}:</span>
+    <span class="price">{{ product.price | price }}</span>
   </div>
-  
-  <p-confirmpopup></p-confirmpopup>
-  
+
+  <p-rating [(ngModel)]="product.rating" [readonly]="true" [stars]="5" iconCancelClass="hidden"></p-rating>
+
+  <div class="action-buttons">
+    <button type="button" pButton icon="pi pi-pencil" (click)="editProduct()" [label]="'EDIT' | translate"
+      class="btn-edit"></button>
+    <button type="button" pButton icon="pi pi-trash" (click)="confirmDelete($event)" [label]="'DELETE' | translate"
+      class="btn-delete" #deleteButton></button>
+  </div>
+</div>
+
+<p-confirmpopup></p-confirmpopup>
+<p-toast></p-toast>

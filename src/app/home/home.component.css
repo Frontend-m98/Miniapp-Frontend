@@ -1,16 +1,86 @@
 .conBtn {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin: 1.5rem 0;
 }
 
+/* Add button (without scroll) */
 .addBtn {
-  position: obsolute;
-  text-align: center;
-  width: 150px;
-  height: 45px;
-  font-family: 'Roboto', sans-serif;
-  border-radius: 10px;
+  position: relative;
+  background: linear-gradient(90deg, #2e7be6, #65a8f7);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 1;
+  transition: transform 0.25s ease, filter 0.25s ease;
+  transform: translateZ(0); /* GPU layerga chiqaradi */
+}
+
+.addBtn i {
+  font-size: 1.1rem;
+  transition: transform 0.25s ease;
+}
+
+.addBtn span {
+  transition: transform 0.25s ease;
+}
+
+/* Hover animation */
+.addBtn:hover {
+  filter: brightness(1.1);
+}
+
+.addBtn:hover i {
+  transform: scale(1.1);
+}
+
+.addBtn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  box-shadow: 0 0 0 0 rgba(101, 168, 247, 0.4);
+  z-index: -1;
+  animation: pulseShadow 2.2s infinite ease-in-out;
+}
+
+@keyframes pulseShadow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(101, 168, 247, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(101, 168, 247, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(101, 168, 247, 0);
+  }
+}
+
+/* Active bosilganda */
+.addBtn:active {
+  transform: scale(0.98);
+  filter: brightness(0.9);
+}
+
+/* Fokus */
+.addBtn:focus {
+  outline: none;
+}
+
+/* Responsiv */
+@media (max-width: 576px) {
+  .addBtn {
+    font-size: 0.9rem;
+    padding: 0.8rem 1.3rem;
+  }
 }

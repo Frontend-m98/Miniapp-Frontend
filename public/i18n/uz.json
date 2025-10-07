@@ -1,5 +1,11 @@
 {
-    "HOME": "Bosh sahifa",
-    "ABOUT": "Biz haqimizda"
-  }
-  
+  "HOME": "Bosh sahifa",
+  "ABOUT": "Biz haqimizda",
+  "PRICE": "Narxi",
+  "EDIT": "Tahrirlash",
+  "DELETE": "O‘chirish",
+  "CONFIRM_DELETE": "Ushbu mahsulotni o‘chirishni istaysizmi?",
+  "CONFIRM_EDIT": "Ushbu mahsulotni tahrirlamoqchimisiz?",
+  "ADD_PRODUCT": "Mahsulot qo‘shish",
+  "EDIT_PRODUCT": "Mahsulotni tahrirlash"
+}

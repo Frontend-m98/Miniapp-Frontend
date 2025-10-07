@@ -1,20 +1,34 @@
-<header class="header">
-  <div class="header__logo">
+<header class="header" [class.dark-mode]="isDarkMode">
+  <div class="header__logo" (click)="closeMenu()">
     <img src="images/brand.svg" alt="Logo" class="logo" />
   </div>
 
-  <nav class="header__nav">
-    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+  <!-- Mobil menyu tugmasi -->
+  <button class="menu-toggle" (click)="toggleMenu()">
+    <i class="pi" [ngClass]="{ 'pi-times': isMenuOpen, 'pi-bars': !isMenuOpen }"></i>
+  </button>
+
+  <!-- Navigatsiya -->
+  <nav class="header__nav" [class.open]="isMenuOpen">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">
       {{ 'HOME' | translate }}
     </a>
-    <a routerLink="/about-us" routerLinkActive="active">
+    <a routerLink="/about-us" routerLinkActive="active" (click)="closeMenu()">
       {{ 'ABOUT' | translate }}
     </a>
   </nav>
 
-  <div class="header__lang">
-    <button (click)="switchLang('uz')" [class.active]="currentLang === 'uz'">UZ</button>
-    <button (click)="switchLang('en')" [class.active]="currentLang === 'en'">EN</button>
-    <button (click)="switchLang('ru')" [class.active]="currentLang === 'ru'">RU</button>
+  <!-- O'ng taraf: Til va Dark Mode -->
+  <div class="header__right">
+    <div class="header__lang">
+      <button (click)="switchLang('uz')" [class.active]="currentLang === 'uz'">UZ</button>
+      <button (click)="switchLang('en')" [class.active]="currentLang === 'en'">EN</button>
+      <button (click)="switchLang('ru')" [class.active]="currentLang === 'ru'">RU</button>
+    </div>
+
+    <!-- Dark Mode tugmasi -->
+    <button class="dark-toggle" (click)="toggleDarkMode()">
+      <i class="pi" [ngClass]="isDarkMode ? 'pi-sun' : 'pi-moon'"></i>
+    </button>
   </div>
 </header>

@@ -21,8 +21,9 @@
       <span class="price-label">Price:</span>
       <div class="column" style="flex: 3">
         <input type="text" formControlName="price" placeholder="Enter price" />
-        <small class="error"
-          *ngIf="productForm.get('price')?.touched && productForm.get('price')?.hasError('required')">
+        <small class="error" *ngIf="
+            productForm.get('price')?.touched && productForm.get('price')?.hasError('required')
+          ">
           Price is required
         </small>
         <small class="error" *ngIf="productForm.get('price')?.hasError('pattern')">

@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-@import './styles/variables.scss';
-@import './styles/theme-overrides.scss';
-@import 'primeicons/primeicons.css';
+@import "./styles/variables.scss";
+@import "./styles/theme-overrides.scss";
+@import "primeicons/primeicons.css";
 
 html,
 body,
@@ -18,8 +18,14 @@ h4 {
 html,
 body,
 app-root {
-    height: 100%;
-    background-color: #f7cae6;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* to‘liq ekranni qoplash uchun */
+    width: 100%;
+    background: linear-gradient(90deg, hsl(279, 90%, 76%), #5aebcb);
+    background-attachment: fixed; /* scroll paytida joyida qoladi */
+    background-size: cover; /* gradientni cho‘zmaydi */
+    overflow-x: hidden; /* responsivda siljish bo‘lmasin */
 }
 
 app-root {

@@ -9,6 +9,7 @@ import { ButtonDirective } from 'primeng/button';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -22,38 +23,20 @@ import { MessageService } from 'primeng/api';
     ButtonDirective,
     ButtonModule,
     ToastModule,
+    TranslateModule, // qo‘shildi
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  constructor(private productsService: ProductsService, private messageService: MessageService) {}
+  constructor(private productsService: ProductsService, private messageService: MessageService) { }
 
   @ViewChild('paginator') paginator: Paginator | undefined;
-
   products: Product[] = [];
-
   totalRecords: number = 0;
   rows: number = 25;
-
-  displayEdit: boolean = false;
-  displayAdd: boolean = false;
-
-  toggleEdit(product: Product) {
-    this.selectedProduct = { ...product };
-    this.displayEdit = true;
-  }
-
-  toggleDelete(product: Product) {
-    if (!product.id) {
-      return;
-    }
-    this.deleteProduct(product.id);
-  }
-
-  toggleAdd() {
-    this.displayAdd = true;
-  }
+  displayEdit = false;
+  displayAdd = false;
 
   selectedProduct: Product = {
     id: 0,
@@ -63,10 +46,22 @@ export class HomeComponent {
     rating: 0,
   };
 
+  toggleEdit(product: Product) {
+    this.selectedProduct = { ...product };
+    this.displayEdit = true;
+  }
+
+  toggleDelete(product: Product) {
+    if (!product.id) return;
+    this.deleteProduct(product.id);
+  }
+
+  toggleAdd() {
+    this.displayAdd = true;
+  }
+
   onConfirmEdit(product: Product) {
-    if (!product.id) {
-      return;
-    }
+    if (!product.id) return;
     this.editProduct(product, product.id);
     this.displayEdit = false;
   }
@@ -74,10 +69,6 @@ export class HomeComponent {
   onConfirmAdd(product: Product) {
     this.addProduct(product);
     this.displayAdd = false;
-  }
-
-  onProductOutput(product: Product) {
-    console.log(product, 'Output');
   }
 
   onPageChange(event: any) {
@@ -94,9 +85,7 @@ export class HomeComponent {
         this.products = data.items;
         this.totalRecords = data.total;
       },
-      error: (error) => {
-        console.log('Fetch error:', error);
-      },
+      error: (error) => console.log('Fetch error:', error),
     });
   }
 
@@ -111,8 +100,7 @@ export class HomeComponent {
           detail: 'Product updated successfully!',
         });
       },
-      error: (error) => {
-        console.log('Edit error:', error);
+      error: () => {
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
@@ -133,8 +121,7 @@ export class HomeComponent {
           detail: 'Product deleted successfully!',
         });
       },
-      error: (error) => {
-        console.log('Delete error:', error);
+      error: () => {
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
@@ -155,8 +142,7 @@ export class HomeComponent {
           detail: 'Product successfully added!',
         });
       },
-      error: (error) => {
-        console.log('Add error:', error);
+      error: () => {
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
@@ -165,6 +151,7 @@ export class HomeComponent {
       },
     });
   }
+
   ngOnInit() {
     this.fetchProducts(0, this.rows);
   }
