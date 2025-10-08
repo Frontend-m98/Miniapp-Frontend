@@ -7,5 +7,13 @@
   "CONFIRM_DELETE": "Ushbu mahsulotni o‘chirishni istaysizmi?",
   "CONFIRM_EDIT": "Ushbu mahsulotni tahrirlamoqchimisiz?",
   "ADD_PRODUCT": "Mahsulot qo‘shish",
-  "EDIT_PRODUCT": "Mahsulotni tahrirlash"
+  "EDIT_PRODUCT": "Mahsulotni tahrirlash",
+
+
+  "ABOUT_TITLE": "Biz haqimizda",
+  "ABOUT_TEXT_1": "Kompaniyamiz sifatli kiyim-kechaklar ishlab chiqaradi...",
+  "ABOUT_TEXT_2": "Bizning maqsadimiz — mijozlarga eng yaxshi xizmatni taqdim etish...",
+  "ABOUT_TEXT_3": "Har bir mahsulotimiz e’tibor bilan yaratiladi...",
+  "ABOUT_TEXT_4": "Biz halollik, ishonch va sifatga tayanamiz...",
+  "ABOUT_TEXT_5": "Original Clothing bilan siz har doim o‘zingizni qulay his qilasiz."
 }

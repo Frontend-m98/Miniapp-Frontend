@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-@import "./styles/variables.scss";
-@import "./styles/theme-overrides.scss";
-@import "primeicons/primeicons.css";
+@import './styles/variables.scss';
+@import './styles/theme-overrides.scss';
+@import 'primeicons/primeicons.css';
 
 html,
 body,
@@ -15,17 +15,29 @@ h4 {
     box-sizing: border-box;
 }
 
+body.dark-mode .wrapper {
+    background: rgba(25, 25, 35, 0.9);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 0 10px rgba(120, 90, 255, 0.4);
+    color: #e0e0e0;
+}
+
+body.dark-mode .wrapper .title,
+body.dark-mode .wrapper .price,
+body.dark-mode .wrapper .price-label {
+    color: #e0e0e0;
+}
+
 html,
 body,
 app-root {
     margin: 0;
     padding: 0;
-    min-height: 100vh; /* to‘liq ekranni qoplash uchun */
+    min-height: 100vh;
     width: 100%;
-    background: linear-gradient(90deg, hsl(279, 90%, 76%), #5aebcb);
-    background-attachment: fixed; /* scroll paytida joyida qoladi */
-    background-size: cover; /* gradientni cho‘zmaydi */
-    overflow-x: hidden; /* responsivda siljish bo‘lmasin */
+    background: linear-gradient(90deg, hsl(279, 79%, 69%), #f1ae7a);
+    background-attachment: fixed;
+    background-size: cover;
+    overflow-x: hidden;
 }
 
 app-root {

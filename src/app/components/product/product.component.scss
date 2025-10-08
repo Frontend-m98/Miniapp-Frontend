@@ -120,6 +120,44 @@
     }
   }
 
+
+  /* Dark mode */
+  :host-context(body.dark-mode) .wrapper {
+    background: #1e1e1e !important;
+    color: #eaeaea !important;
+    box-shadow:
+      rgba(255, 255, 255, 0.08) 0px 1px 3px 0px,
+      rgba(255, 255, 255, 0.05) 0px 1px 2px 1px;
+
+    body.dark-mode .wrapper {
+      background: rgba(25, 25, 35, 0.9);
+      box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.6),
+        inset 0 0 10px rgba(120, 90, 255, 0.4);
+      color: #e0e0e0;
+    }
+
+    body.dark-mode .wrapper .title,
+    body.dark-mode .wrapper .price,
+    body.dark-mode .wrapper .price-label {
+      color: #e0e0e0;
+    }
+
+    .title {
+      color: #fff !important;
+    }
+
+    .price-label,
+    .price {
+      color: #ccc !important;
+    }
+
+    .action-buttons button {
+      color: #fff !important;
+    }
+  }
+
+
   @media (max-width: 1200px) {
     max-width: 230px;
   }
@@ -163,6 +201,7 @@
       }
     }
   }
+
 
   @media (max-width: 576px) {
     max-width: 90%;

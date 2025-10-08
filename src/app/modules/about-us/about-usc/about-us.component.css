@@ -4,44 +4,33 @@
   justify-content: center;
   font-family: 'Poppins', sans-serif;
   margin-bottom: 20px;
+  color: #000;
+  transition: color 0.3s ease;
 }
 
-.first1 {
-  text-align: center;
-  font-size: 17px;
-  font-family: 'poppins' sans-serif;
-  color: black;
-  /* margin-bottom: 5px; */
-}
-
-.first2 {
-  text-align: center;
-  font-size: 17px;
-  font-family: 'poppins' sans-serif;
-  color: black;
-  /* margin-bottom: 5px; */
-}
-
-.first3 {
-  text-align: center;
-  font-size: 17px;
-  font-family: 'poppins' sans-serif;
-  color: black;
-  /* margin-bottom: 5px; */
-}
-
-.first4 {
-  text-align: center;
-  font-size: 17px;
-  font-family: 'poppins' sans-serif;
-  color: black;
-  /* margin-bottom: 5px; */
-}
-
+.first1,
+.first2,
+.first3,
+.first4,
 .first5 {
   text-align: center;
   font-size: 17px;
-  font-family: 'poppins' sans-serif;
-  color: black;
-  /* margin-bottom: 5px; */
+  font-family: 'Poppins', sans-serif;
+  color: #000;
+  transition: color 0.3s ease;
+}
+
+/* Dark mode  */
+body.dark-mode .aboutus,
+body.dark-mode .first1,
+body.dark-mode .first2,
+body.dark-mode .first3,
+body.dark-mode .first4,
+body.dark-mode .first5 {
+  color: #fff;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  transition: background-color 0.3s ease;
 }
